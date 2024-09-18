@@ -9,6 +9,7 @@ type CreatedBy string
 type CreatedAt Date
 type DeletedBy string
 type DeletedAt Date
+type MoneyValue float64
 
 type CommonDTO struct {
 	Id        Id        `json:"id"`
