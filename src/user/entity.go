@@ -1,6 +1,6 @@
 package user
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type UserInputDTO struct {
 	Email    string `json:"email"`

@@ -1,6 +1,6 @@
 package rule
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type RuleInputDTO struct {
 	PolicyId   common.Id `json:"policy_id"`

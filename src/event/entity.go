@@ -1,6 +1,6 @@
 package event
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type EventInputDTO struct {
 	Payload string `json:"payload"`

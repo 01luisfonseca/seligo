@@ -1,6 +1,6 @@
 package participant
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type ParticipantInputDTO struct {
 	ProjectId common.Id `json:"project_id"`

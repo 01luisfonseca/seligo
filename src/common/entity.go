@@ -21,3 +21,15 @@ type CommonDTO struct {
 	DeletedAt DeletedAt `json:"deleted_at,omitempty"`
 	DeletedBy DeletedBy `json:"deleted_by,omitempty"`
 }
+
+type CommonSort struct {
+	field string
+	order string
+}
+
+type CommonFilter struct {
+	search string
+	limit  int
+	offset int
+	sort   []CommonSort
+}

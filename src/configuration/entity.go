@@ -1,6 +1,6 @@
 package configuration
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type ConfigurationInputDTO struct {
 	Kind        common.Id `json:"kind"`

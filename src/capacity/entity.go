@@ -1,6 +1,6 @@
 package capacity
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type CapacityInputDTO struct {
 	LicenseId   common.Id `json:"license_id"`

@@ -1,6 +1,6 @@
 package project
 
-import "github.com/01luisfonseca/seligo/entities/common"
+import "github.com/01luisfonseca/seligo/src/common"
 
 type ProjectInputDTO struct {
 	ApplicationId common.Id `json:"application_id"`
