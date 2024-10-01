@@ -23,13 +23,19 @@ type CommonDTO struct {
 }
 
 type CommonSort struct {
-	field string
-	order string
+	Field string
+	Order string
 }
 
 type CommonFilter struct {
-	search string
-	limit  int
-	offset int
-	sort   []CommonSort
+	Search string
+	Limit  int
+	Offset int
+	Sort   []CommonSort
+}
+
+type CommonPagination struct {
+	Limit  int
+	Offset int
+	Total  int
 }

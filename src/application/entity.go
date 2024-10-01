@@ -13,10 +13,15 @@ type ApplicationRegistryDTO struct {
 	ApplicationInputDTO
 }
 
-type ApplicationInterface interface {
-	GetApplications() []ApplicationRegistryDTO
-	GetApplication(id string) ApplicationRegistryDTO
-	CreateApplication(application ApplicationInputDTO) ApplicationRegistryDTO
-	UpdateApplication(id string, application ApplicationInputDTO) ApplicationRegistryDTO
-	DeleteApplication(id string) ApplicationRegistryDTO
+type AplicationListDTO struct {
+	Pagination common.CommonPagination
+	Items      []ApplicationRegistryDTO
+}
+
+type ApplicationInterfaceDAO interface {
+	GetApplications(common.CommonFilter) (AplicationListDTO, error)
+	GetApplication(id string) (ApplicationRegistryDTO, error)
+	CreateApplication(application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
+	UpdateApplication(id string, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
+	DeleteApplication(id string) (ApplicationRegistryDTO, error)
 }
