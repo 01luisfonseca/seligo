@@ -22,6 +22,10 @@ type CommonDTO struct {
 	DeletedBy DeletedBy `json:"deleted_by,omitempty"`
 }
 
+type CommonContext struct {
+	UserId string
+}
+
 type CommonSort struct {
 	Field string
 	Order string

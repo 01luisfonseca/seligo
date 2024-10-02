@@ -22,8 +22,15 @@ func TestApplicationCRUDCase_GetApplications(t *testing.T) {
 			},
 		}
 
+		context := common.CommonContext{
+			UserId: "1",
+		}
+
 		// Act
-		applications := application.GetApplications(filter)
+		applications, err := application.GetApplications(context, filter)
+		if err != nil {
+			t.Errorf("Error: %s", err.Error())
+		}
 
 		// Assert
 		if len(applications.Items) != 0 {

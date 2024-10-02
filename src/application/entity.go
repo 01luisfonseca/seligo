@@ -19,7 +19,7 @@ type AplicationListDTO struct {
 }
 
 type ApplicationInterfaceDAO interface {
-	GetApplications(common.CommonFilter) (AplicationListDTO, error)
+	GetApplications(filter common.CommonFilter) (AplicationListDTO, error)
 	GetApplication(id string) (ApplicationRegistryDTO, error)
 	CreateApplication(application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
 	UpdateApplication(id string, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
