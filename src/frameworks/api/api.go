@@ -15,15 +15,19 @@ func NewFrameworkAPI(addr string) *FrameworkAPI {
 	}
 }
 
-func (f *FrameworkAPI) Run() error {
+func (f *FrameworkAPI) Prepare() http.Handler {
 	router := http.NewServeMux()
 	RegisterRoutes(router)
 	middleware := NewMiddleware(router)
+	return middleware.ApplyMiddleware()
+}
+
+func (f *FrameworkAPI) Run() error {
+	handler := f.Prepare()
 	server := http.Server{
 		Addr:    f.addr,
-		Handler: middleware.ApplyMiddleware(),
+		Handler: handler,
 	}
 	log.Println("Starting server on", f.addr)
-
 	return server.ListenAndServe()
 }
