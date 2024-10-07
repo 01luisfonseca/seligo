@@ -1,6 +1,6 @@
 package application
 
-import "github.com/01luisfonseca/seligo/src/common"
+import "github.com/01luisfonseca/seligo/src/cases/common"
 
 type ApplicationInputDTO struct {
 	Name        string `json:"name"`

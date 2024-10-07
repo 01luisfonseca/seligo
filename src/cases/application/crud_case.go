@@ -3,7 +3,7 @@ package application
 import (
 	"time"
 
-	"github.com/01luisfonseca/seligo/src/common"
+	"github.com/01luisfonseca/seligo/src/cases/common"
 )
 
 type ApplicationCRUDCase struct {

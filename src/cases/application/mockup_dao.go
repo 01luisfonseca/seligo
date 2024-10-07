@@ -3,7 +3,7 @@ package application
 import (
 	"errors"
 
-	"github.com/01luisfonseca/seligo/src/common"
+	"github.com/01luisfonseca/seligo/src/cases/common"
 )
 
 var applicationList = []ApplicationRegistryDTO{
@@ -69,7 +69,7 @@ func (m *MockApplicationDAO) GetApplication(id string) (ApplicationRegistryDTO, 
 }
 
 func (m *MockApplicationDAO) CreateApplication(application ApplicationRegistryDTO) (ApplicationRegistryDTO, error) {
-	application.Id = common.Id(len(applicationList) + 1)
+	application.Id = common.Id(rune(len(applicationList) + 1))
 	applicationList = append(applicationList, application)
 	return application, nil
 }

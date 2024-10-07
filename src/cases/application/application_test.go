@@ -3,7 +3,7 @@ package application
 import (
 	"testing"
 
-	"github.com/01luisfonseca/seligo/src/common"
+	"github.com/01luisfonseca/seligo/src/cases/common"
 )
 
 func TestApplicationCRUDCase_GetApplications(t *testing.T) {

@@ -7,12 +7,12 @@ import (
 )
 
 func TestFrameworkAPI_Run(t *testing.T) {
-	t.Run("should start the server", func(t *testing.T) {
-		// Arrange
-		framework := NewFrameworkAPI(":8080")
-		handler := framework.Prepare()
-		server := httptest.NewServer(handler)
-		defer server.Close()
+	// Arrange
+	framework := NewFrameworkAPI(":8080")
+	handler := framework.Prepare()
+	server := httptest.NewServer(handler)
+	defer server.Close()
+	t.Run("should run health endpoint", func(t *testing.T) {
 
 		// Act
 		resp, err := http.Get(server.URL + "/health")
