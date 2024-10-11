@@ -20,8 +20,8 @@ type AplicationListDTO struct {
 
 type ApplicationInterfaceDAO interface {
 	GetApplications(filter common.CommonFilter) (AplicationListDTO, error)
-	GetApplication(id string) (ApplicationRegistryDTO, error)
+	GetApplication(id common.Id) (ApplicationRegistryDTO, error)
 	CreateApplication(application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
-	UpdateApplication(id string, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
-	DeleteApplication(id string) (ApplicationRegistryDTO, error)
+	UpdateApplication(id common.Id, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error)
+	DeleteApplication(id common.Id) (ApplicationRegistryDTO, error)
 }

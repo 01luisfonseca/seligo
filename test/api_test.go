@@ -1,14 +1,16 @@
-package api
+package test
 
 import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/01luisfonseca/seligo/src/frameworks/api"
 )
 
 func TestFrameworkAPI_Run(t *testing.T) {
 	// Arrange
-	framework := NewFrameworkAPI(":8080")
+	framework := api.NewFrameworkAPI(":8080")
 	handler := framework.Prepare()
 	server := httptest.NewServer(handler)
 	defer server.Close()

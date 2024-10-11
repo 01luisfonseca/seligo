@@ -20,11 +20,14 @@ func (c *ApplicationCRUDCase) GetApplications(context common.CommonContext, filt
 	return c.application.GetApplications(filter)
 }
 
-func (c *ApplicationCRUDCase) GetApplication(context common.CommonContext, id string) (ApplicationRegistryDTO, error) {
+func (c *ApplicationCRUDCase) GetApplication(context common.CommonContext, id common.Id) (ApplicationRegistryDTO, error) {
 	return c.application.GetApplication(id)
 }
 
-func (c *ApplicationCRUDCase) CreateApplication(context common.CommonContext, application ApplicationInputDTO) (ApplicationRegistryDTO, error) {
+func (c *ApplicationCRUDCase) CreateApplication(
+	context common.CommonContext,
+	application ApplicationInputDTO,
+) (ApplicationRegistryDTO, error) {
 	timeNow := time.Now()
 	applicationRegistry := ApplicationRegistryDTO{
 		ApplicationInputDTO: application,
@@ -40,7 +43,11 @@ func (c *ApplicationCRUDCase) CreateApplication(context common.CommonContext, ap
 	return c.application.CreateApplication(applicationRegistry)
 }
 
-func (c *ApplicationCRUDCase) UpdateApplication(context common.CommonContext, id string, application ApplicationInputDTO) (ApplicationRegistryDTO, error) {
+func (c *ApplicationCRUDCase) UpdateApplication(
+	context common.CommonContext,
+	id common.Id,
+	application ApplicationInputDTO,
+) (ApplicationRegistryDTO, error) {
 	currentApplication, err := c.application.GetApplication(id)
 	if err != nil {
 		return ApplicationRegistryDTO{}, err
@@ -50,7 +57,11 @@ func (c *ApplicationCRUDCase) UpdateApplication(context common.CommonContext, id
 	return c.application.UpdateApplication(id, currentApplication)
 }
 
-func (c *ApplicationCRUDCase) DeleteApplication(context common.CommonContext, id string, softdelete bool) (ApplicationRegistryDTO, error) {
+func (c *ApplicationCRUDCase) DeleteApplication(
+	context common.CommonContext,
+	id common.Id,
+	softdelete bool,
+) (ApplicationRegistryDTO, error) {
 	if softdelete {
 		currentApplication, err := c.application.GetApplication(id)
 		if err != nil {

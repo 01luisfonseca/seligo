@@ -2,6 +2,7 @@ package application
 
 import (
 	"errors"
+	"strconv"
 
 	"github.com/01luisfonseca/seligo/src/cases/common"
 )
@@ -59,9 +60,9 @@ func (m *MockApplicationDAO) GetApplications(filter common.CommonFilter) (Aplica
 	return toReturn, nil
 }
 
-func (m *MockApplicationDAO) GetApplication(id string) (ApplicationRegistryDTO, error) {
+func (m *MockApplicationDAO) GetApplication(id common.Id) (ApplicationRegistryDTO, error) {
 	for _, application := range applicationList {
-		if application.Id == common.Id(id) {
+		if application.Id == id {
 			return application, nil
 		}
 	}
@@ -69,24 +70,31 @@ func (m *MockApplicationDAO) GetApplication(id string) (ApplicationRegistryDTO, 
 }
 
 func (m *MockApplicationDAO) CreateApplication(application ApplicationRegistryDTO) (ApplicationRegistryDTO, error) {
-	application.Id = common.Id(rune(len(applicationList) + 1))
+	application.Id = common.Id(strconv.Itoa((len(applicationList) + 1)))
 	applicationList = append(applicationList, application)
 	return application, nil
 }
 
-func (m *MockApplicationDAO) UpdateApplication(id string, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error) {
+func (m *MockApplicationDAO) UpdateApplication(id common.Id, application ApplicationRegistryDTO) (ApplicationRegistryDTO, error) {
 	for i, application := range applicationList {
-		if application.Id == common.Id(id) {
-			applicationList[i] = application
-			return application, nil
+		if application.Id == id {
+			applicationList[i].ApplicationInputDTO.Description = application.ApplicationInputDTO.Description
+			applicationList[i].ApplicationInputDTO.Name = application.ApplicationInputDTO.Name
+			applicationList[i].CommonDTO.UpdatedAt = application.UpdatedAt
+			applicationList[i].CommonDTO.UpdatedBy = application.UpdatedBy
+			applicationList[i].CommonDTO.CreatedAt = application.CreatedAt
+			applicationList[i].CommonDTO.CreatedBy = application.CreatedBy
+			applicationList[i].CommonDTO.DeletedAt = application.DeletedAt
+			applicationList[i].CommonDTO.DeletedBy = application.DeletedBy
+			return applicationList[i], nil
 		}
 	}
 	return ApplicationRegistryDTO{}, nil
 }
 
-func (m *MockApplicationDAO) DeleteApplication(id string) (ApplicationRegistryDTO, error) {
+func (m *MockApplicationDAO) DeleteApplication(id common.Id) (ApplicationRegistryDTO, error) {
 	for i, application := range applicationList {
-		if application.Id == common.Id(id) {
+		if application.Id == id {
 			applicationList = append(applicationList[:i], applicationList[i+1:]...)
 			return application, nil
 		}
